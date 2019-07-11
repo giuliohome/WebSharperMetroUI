@@ -51,10 +51,9 @@ module Templating =
 
 module ServerModel =
     let Entries = 
-        [ ("test", "go"); ("again", "ping") ] 
-        |> List.append <| List.map(fun i -> (string i,string i)) [1..20] 
-        |> List.toSeq 
-    let EntryMap = Map<string, string>( Entries )
+        [1..20] 
+        |> List.map(fun i -> (string i,string i, i)) 
+        |> List.append [ ("test", "go", 0); ("again", "ping", 0) ] 
 
 module Site =
     open WebSharper.UI.Html
@@ -80,13 +79,15 @@ module Site =
             table [attr.``class`` "table"; attr.``data-`` "role" "table"; attr.id "demo-table"] [
                 yield thead [] [
                     tr [] [
-                        th [attr.``class`` "sortable-column sort-asc"] [text "Col 1"]
+                        th [attr.``class`` "sortable-column"] [text "Col 1"]
                         th [attr.``class`` "sortable-column"] [text "Col 2"]
+                        th [attr.``class`` "sortable-column"; attr.``data-`` "format" "int"] [text "Col 3"]
                     ] ]
-                for KeyValue(key, value) in ServerModel.EntryMap do
+                for (col1, col2, col3) in ServerModel.Entries do
                     yield tr [] [
-                        td [] [text key]
-                        td [] [text value]
+                        td [] [text col1]
+                        td [] [text col2]
+                        td [] [text <| string col3]
                     ] 
             ]
             Doc.WebControl (new Web.Require<MetroScript>())
