@@ -7,11 +7,7 @@ open WebSharper.UI.Server
 
 type MetroStyle() =
     inherit Resources.BaseResource("https://cdn.metroui.org.ua",
-        "v4/css/metro-all.min.css",
-        "v4/css/metro.min.css",
-        "v4/css/metro-colors.min.css",
-        "v4/css/metro-rtl.min.css",
-        "v4/css/metro-icons.min.css")
+        "v4/css/metro-all.min.css")
 
 
 [<Require(typeof<JQuery.Resources.JQuery>)>]
