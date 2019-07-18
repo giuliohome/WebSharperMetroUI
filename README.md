@@ -6,3 +6,5 @@ You can see here a simple demo of a cool table with an inspector (possibility to
 ![demo](https://snag.gy/uJcpRw.jpg)
 
 Thanks to [Loïc Denuzière](https://github.com/Tarmil) and [András Jankó](https://github.com/Jand42) for the suggestions on the gitter channel!
+
+A [real world example](https://giuliohome.wordpress.com/2019/07/18/autogenerating-columns-sqlprovider-and-websharper/) with F# SQL Type Provider.
